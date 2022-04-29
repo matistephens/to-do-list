@@ -9,13 +9,16 @@
             <input v-model="nuevaTarea" type="text" class="form-control" placeholder="Ingresa una nueva tarea" required>
           </div>
           <div class="col-2">
-            <button type="submit" class=" btn btn-outline-secondary">Agregar</button>
+            <button type="submit" class="btn btn-outline-secondary">Agregar</button>
           </div>
         </div>
       </form>
       <h4 class="text-secondary mt-4">Lista</h4>
       <ul class="list-group">
-        <li v-for="(tarea, $index) in tareas" :key="$index" class="list-group-item">{{ $index + 1 }}. {{ tarea }}</li>
+        <li v-for="(tarea, $index) in tareas" :key="$index" class="task">
+          {{ $index + 1 }}. {{ tarea }} 
+          <button v-on:click="borrarTarea($index)" type="button" class="btn btn-outline-success">Completar</button>
+        </li>
       </ul>
     </div>
   </div>
@@ -37,7 +40,10 @@ export default {
   methods: {
     agregarNuevaTarea(){
       this.tareas.unshift(this.nuevaTarea)
-      
+      this.nuevaTarea=""      
+    },
+    borrarTarea(key) {
+      this.tareas.splice(key, 1)
     }
   }
 }
@@ -45,4 +51,13 @@ export default {
 </script>
 
 <style>
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
 </style>
