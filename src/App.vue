@@ -13,7 +13,7 @@
           </div>
         </div>
       </form>
-      <h4 class="text-secondary mt-4">Lista</h4>
+      <h4 class="text-secondary mt-4">Lista tareas</h4>
       <ul class="list-group">
         <li v-for="(tarea, $index) in tareas" :key="$index" class="task">
           {{ $index + 1 }}. {{ tarea }} 
