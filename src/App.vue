@@ -31,11 +31,7 @@ export default {
   name: 'App',
   data: () => ({
     nuevaTarea: "",
-    tareas: [
-      "Primera tarea",
-      "Segunda tarea"
-
-    ]
+    tareas: [],
   }),
   methods: {
     agregarNuevaTarea(){
