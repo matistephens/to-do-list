@@ -15,10 +15,8 @@
       </form>
       <h4 class="text-secondary mt-4">Lista tareas</h4>
       <ul class="list-group">
-        <li v-for="(tarea, $index) in tareas" :key="$index" class="task">
-          {{ $index + 1 }}. {{ tarea }} 
-          <button v-on:click="borrarTarea($index)" type="button" class="btn btn-outline-success">Completar</button>
-        </li>
+        <TareaLista @tareaCompletada="borrarTarea($event)" v-for="(tarea, $index) in tareas" :key="$index" :elementoListado="tarea" :indexTarea="$index"/>
+
       </ul>
     </div>
   </div>
@@ -26,6 +24,7 @@
 </template>
 
 <script>
+import TareaLista from "@/components/TareaLista.vue"
 
 export default {
   name: 'App',
@@ -33,6 +32,9 @@ export default {
     nuevaTarea: "",
     tareas: [],
   }),
+  components: {
+    TareaLista
+  },
   methods: {
     agregarNuevaTarea(){
       this.tareas.unshift(this.nuevaTarea)
